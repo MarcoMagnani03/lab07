@@ -53,10 +53,14 @@ public class ProductImpl implements Product {
      */
     @Override
     public final boolean equals(final Object obj) {
-        return obj == this
-            || obj instanceof ProductImpl p
-            && p.getClass().equals(this.getClass()) // Breaks the symmetry otherwise
-            && p.name.equals(name);
+        if(obj == this){
+            return true;
+        }
+        if(obj instanceof ProductImpl){
+            ProductImpl p = (ProductImpl)obj;
+            return p.getClass().equals(this.getClass())&& p.name.equals(name);
+        }
+        return false;
     }
 
     /**
